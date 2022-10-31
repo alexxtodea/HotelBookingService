@@ -17,9 +17,15 @@
   
   
     <p class="headers">your room</p>
-    <div class="roomdescription-column">
-      {{ description }} <br>
-      <p id="room-column"> roomnumber: {{ roomNumber}} </p>
+    <div>
+      <RoomComponent
+        :roomType="room.roomType"
+        :description="room.description"
+        :imageUrl="room.imageUrl"
+        :bedAmount="room.bedAmount"
+        :price="room.price"
+        :roomNumber="room.roomNumber"
+      />
     </div>
 
    
@@ -38,23 +44,23 @@
       
   },
   props:{
-    RoomId: String
+    id: String,
   },
     data() {
       return {
-        room: [],
-        error: null,
-        id: this.$route.params.RoomId
+        room: null,
+        error: null
       }
     },
    methods: {
    getRoomById() {
-    console.log(id)
-       const id = this.$route.params.Id;
+    console.log(this.$route)
+       const id = this.$route.params.Rid;
 
        fetch(`http://localhost:8002/rooms/find/${id}`)
       .then(response => {
            if(response.ok){
+            
                return response.json()
            } else{
              console.log(response)
@@ -62,7 +68,7 @@
            }     
          })
        .then(response => {
-           this.rooms = response;
+           this.room = response;
        })
        .catch(err => {
            this.error = err;

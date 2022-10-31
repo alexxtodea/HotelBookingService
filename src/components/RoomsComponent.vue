@@ -12,8 +12,9 @@
     </div> 
       <p>
         <button>
-                   
+   
         <router-link :to="`/find/${id}`">Explore</router-link>
+            
         </button>
       </p>
     </div>

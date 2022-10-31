@@ -18,18 +18,13 @@
     export default {
     name: 'RoomComponent',
     props:{      
-        id: String,
         roomType: String,
         description: String,
         imageUrl: String,
         bedAmount: Number,
         price: Number,
         roomNumber: Number
-      },
-      data: function () {
-      return {
-      }
-    }    
+      },     
     }
     </script>
     
